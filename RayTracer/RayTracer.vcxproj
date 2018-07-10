@@ -162,6 +162,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="easyppm.c" />
+    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="RayTracer.cpp" />
     <ClCompile Include="Render.cpp" />
     <ClCompile Include="RGB.cpp" />

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Vector3.h"
+#include <math.h>
 
 class Sphere {
 private:
@@ -14,4 +15,5 @@ public:
 	const Vector3<float>& GetCenterPosition() const;
 
 	float CalculateIntersectDiscriminant(const Vector3<float>& origin, const Vector3<float>& direction);
+	float CalculateFirstIntersectPoint(const Vector3<float>& origin, const Vector3<float>& direction);
 };
