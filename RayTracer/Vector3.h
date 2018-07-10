@@ -17,10 +17,12 @@ public:
 	{
 		return _x;
 	}
+
 	T GetY() const
 	{
 		return _y;
 	}
+
 	T GetZ() const
 	{
 		return _z;
@@ -72,6 +74,7 @@ public:
 	{
 		return v1.GetX() == v2.GetX() && v1.GetY() == v2.GetY() && v1.GetZ() == v2.GetZ();
 	}
+
 	friend Vector3<T> operator+(const Vector3<T> &v1, const Vector3<T> &v2)
 	{
 		Vector3<T> v;
@@ -80,6 +83,7 @@ public:
 		v.SetZ(v1.GetZ() + v2.GetZ());
 		return v;
 	}
+
 	friend Vector3<T> operator-(const Vector3<T> &v1, const Vector3<T> &v2)
 	{
 		Vector3<T> v;
@@ -88,6 +92,7 @@ public:
 		v.SetZ(v1.GetZ() - v2.GetZ());
 		return v;
 	}
+
 	friend Vector3<T> operator*(const Vector3<T> &v1, float scalar)
 	{
 		Vector3<T> v;
