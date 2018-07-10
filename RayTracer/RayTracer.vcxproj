@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="easyppm.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="Render.h" />
     <ClInclude Include="RGB.h" />
     <ClInclude Include="Scene.h" />
