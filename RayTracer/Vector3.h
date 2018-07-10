@@ -56,7 +56,7 @@ public:
 		return v;
 	}
 
-	float DotProduct(const Vector3<T>& vector)
+	float DotProduct(const Vector3<T>& vector) const
 	{
 		return GetX() * vector.GetX() + GetY() * vector.GetY() + GetZ() * vector.GetZ();
 	}
@@ -99,6 +99,15 @@ public:
 		v.SetX(v1.GetX() * scalar);
 		v.SetY(v1.GetY() * scalar);
 		v.SetZ(v1.GetZ() * scalar);
+		return v;
+	}
+
+	static Vector3<T> ConstructVector(const Vector3<T> &startPoint, const Vector3<T> &endPoint)
+	{
+		Vector3<T> v;
+		v.SetX(endPoint.GetX() - startPoint.GetX());
+		v.SetY(endPoint.GetY() - startPoint.GetY());
+		v.SetZ(endPoint.GetZ() - startPoint.GetZ());
 		return v;
 	}
 };

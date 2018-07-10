@@ -1,36 +1,38 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include "RGB.h"
 
-RGB::RGB(char r, char g, char b) : _r(r), _g(g), _b(b)
+RGB::RGB() {}
+
+RGB::RGB(int r, int g, int b) : _r(r), _g(g), _b(b)
 {
 }
 
-char RGB::GetRed()
+int RGB::GetRed()
 {
 	return _r;
 }
 
-char RGB::GetGreen()
+int RGB::GetGreen()
 {
 	return _g;
 }
 
-char RGB::GetBlue()
+int RGB::GetBlue()
 {
 	return _b;
 }
 
-void RGB::SetRed(char r)
+void RGB::SetRed(int r)
 {
 	_r = r;
 }
 
-void RGB::SetGreen(char g)
+void RGB::SetGreen(int g)
 {
 	_g = g;
 }
 
-void RGB::SetBlue(char b)
+void RGB::SetBlue(int b)
 {
 	_b = b;
 }

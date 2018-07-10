@@ -2,18 +2,19 @@
 
 class RGB {
 private:
-	char _r;
-	char _g;
-	char _b;
+	int _r;
+	int _g;
+	int _b;
 
 public:
-	RGB(char r, char g, char b);
+	RGB();
+	RGB(int r, int g, int b);
 
-	char GetRed();
-	char GetGreen();
-	char GetBlue();
+	int GetRed();
+	int GetGreen();
+	int GetBlue();
 
-	void SetRed(char r);
-	void SetGreen(char g);
-	void SetBlue(char b);
+	void SetRed(int r);
+	void SetGreen(int g);
+	void SetBlue(int b);
 };
