@@ -69,13 +69,13 @@ float Camera::GetFocalDistance()
 
 Vector2<float> Camera::ImagePlanePoint(int i, int j, int width, int height)
 {
-	float r = _u.GetY();
+	float r = _u.GetX();
 	float t = _v.GetZ();
 	float l = -1 * r;
 	float b = -1 * t;
-	//float u = l + ((r - l)*(i + 0.5) / width);
-	//float v = b + ((t - b)*(j + 0.5) / height);
-	float u = (-1) + (((1 - (-1))*(i+0.5)) / width);
-	float v = (-1) + (((1 - (-1))*(j+0.5)) / height);
+	float u = l + ((r - l)*(i + 0.5) / width);
+	float v = b + ((t - b)*(j + 0.5) / height);
+	//float u = (-1) + (((1 - (-1))*(i+0.5)) / width);
+	//float v = (-1) + (((1 - (-1))*(j+0.5)) / height);
 	return Vector2<float>(u, v);
 }
