@@ -1,5 +1,7 @@
 #pragma once
 
+#include <math.h>
+
 template <class T>
 class Vector3 {
 private:
@@ -8,22 +10,90 @@ private:
 	T _z;
 
 public:
-	Vector3();
-	Vector3(T x, T y, T z);
+	Vector3() {};
+	Vector3(T x, T y, T z) : _x(x), _y(y), _z(z) {}
 
-	T GetX();
-	T GetY();
-	T GetZ();
+	T GetX() const
+	{
+		return _x;
+	}
+	T GetY() const
+	{
+		return _y;
+	}
+	T GetZ() const
+	{
+		return _z;
+	}
 
-	void SetX(T x);
-	void SetY(T y);
-	void SetZ(T z);
+	void SetX(T x)
+	{
+		_x = x;
+	}
+	void SetY(T y)
+	{
+		_y = y;
+	}
+	void SetZ(T z)
+	{
+		_z = z;
+	}
 
-	float DotProduct(const Vector3<T>&);
-	Vector3<T> CrossProduct(const Vector3<T>&);
+	float Length()
+	{
+		return sqrtf((GetX() * GetX()) + (GetY() * GetY()) + (GetZ() * GetZ()));
+	}
 
-	friend bool operator==(const Vector3<T> &v1, const Vector3<T> &v2);
-	friend Vector3<T> operator+(const Vector3<T> &v1, const Vector3<T> &v2);
-	friend Vector3<T> operator-(const Vector3<T> &v1, const Vector3<T> &v2);
-	friend Vector3<T> operator*(const Vector3<T> &v1, float scalar);
+	Vector3<T> Normalize()
+	{
+		Vector3<T> v;
+		float len = Length();
+		v.SetX(GetX() / len);
+		v.SetY(GetY() / len);
+		v.SetZ(GetZ() / len);
+		return v;
+	}
+
+	float DotProduct(const Vector3<T>& vector)
+	{
+		return GetX() * vector.GetX() + GetY() * vector.GetY() + GetZ() * vector.GetZ();
+	}
+
+	Vector3<T> CrossProduct(const Vector3<T>& vector)
+	{
+		Vector3<T> v;
+		v.SetX(GetY() * vector.GetZ() - GetZ() * vector.GetY());
+		v.SetY(GetZ() * vector.GetX() - GetX() * vector.GetZ());
+		v.SetZ(GetX() * vector.GetY() - GetY() * vector.GetX());
+		return v;
+	}
+
+	friend bool operator==(const Vector3<T> &v1, const Vector3<T> &v2)
+	{
+		return v1.GetX() == v2.GetX() && v1.GetY() == v2.GetY() && v1.GetZ() == v2.GetZ();
+	}
+	friend Vector3<T> operator+(const Vector3<T> &v1, const Vector3<T> &v2)
+	{
+		Vector3<T> v;
+		v.SetX(v1.GetX() + v2.GetX());
+		v.SetY(v1.GetY() + v2.GetY());
+		v.SetZ(v1.GetZ() + v2.GetZ());
+		return v;
+	}
+	friend Vector3<T> operator-(const Vector3<T> &v1, const Vector3<T> &v2)
+	{
+		Vector3<T> v;
+		v.SetX(v1.GetX() - v2.GetX());
+		v.SetY(v1.GetY() - v2.GetY());
+		v.SetZ(v1.GetZ() - v2.GetZ());
+		return v;
+	}
+	friend Vector3<T> operator*(const Vector3<T> &v1, float scalar)
+	{
+		Vector3<T> v;
+		v.SetX(v1.GetX() * scalar);
+		v.SetY(v1.GetY() * scalar);
+		v.SetZ(v1.GetZ() * scalar);
+		return v;
+	}
 };
