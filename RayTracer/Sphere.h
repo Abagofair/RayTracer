@@ -1,18 +1,21 @@
 #pragma once
 
+class Ray;
+
+#include "Surface.h"
 #include "Vector3.h"
 #include <math.h>
 
-class Sphere {
+class Sphere : public Surface {
 private:
-	Vector3<float> _centerPosition;
 	float _radius;
 
 public:
 	Sphere(float x, float y, float z, float radius);
 
+	virtual bool Hit(const Ray& ray, Vector2<float>& hitResult);
+
 	float GetRadius() const;
-	const Vector3<float>& GetCenterPosition() const;
 
 	float CalculateIntersectDiscriminant(const Vector3<float>& origin, const Vector3<float>& direction);
 	float CalculateFirstIntersectPoint(const Vector3<float>& origin, const Vector3<float>& direction);

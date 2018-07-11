@@ -1,7 +1,9 @@
 #pragma once
 
-#include "Sphere.h"
-#include "Camera.h"
+//#include "Sphere.h"
+class Sphere;
+class Camera;
+
 #include <vector>
 
 class Scene {
