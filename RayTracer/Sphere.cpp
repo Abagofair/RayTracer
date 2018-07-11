@@ -1,10 +1,11 @@
 //#include "stdafx.h"
 #include "Sphere.h"
 
-Sphere::Sphere(float x, float y, float z, float radius)
+Sphere::Sphere(float x, float y, float z, float radius, RGB color)
 {
 	SetLocation(Vector3<float>(x, y, z));
 	_radius = radius;
+	SetMaterial(Material(color));
 }
 
 bool Sphere::Hit(const Ray& ray, Vector2<float>& hitResult)

@@ -63,6 +63,9 @@
     <ClInclude Include="Ray.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Camera.cpp">
@@ -100,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="Sphere.cpp">
       <Filter>src\Surfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

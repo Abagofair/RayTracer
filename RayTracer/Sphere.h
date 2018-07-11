@@ -8,9 +8,8 @@
 class Sphere : public Surface {
 private:
 	float _radius;
-
 public:
-	Sphere(float x, float y, float z, float radius);
+	Sphere(float x, float y, float z, float radius, RGB color);
 	virtual bool Hit(const Ray& ray, Vector2<float>& hitResult);
 	float GetRadius() const;
 };
