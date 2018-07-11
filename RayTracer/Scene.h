@@ -1,20 +1,20 @@
 #pragma once
 
 //#include "Sphere.h"
-class Sphere;
+class Surface;
 class Camera;
 
 #include <vector>
 
 class Scene {
 private:
-	std::vector<Sphere*> _scene;
+	std::vector<Surface*> _scene;
 	Camera* _mainCamera;
 
 public:
 	Scene(Camera* camera);
 	~Scene();
 
-	void AddObject(Sphere* sphere);
-	const std::vector<Sphere*>& GetScene() const;
+	void AddObject(Surface* sphere);
+	const std::vector<Surface*>& GetScene() const;
 };

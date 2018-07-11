@@ -10,12 +10,12 @@ Scene::~Scene()
 {
 }
 
-void Scene::AddObject(Sphere * sphere)
+void Scene::AddObject(Surface * sphere)
 {
 	_scene.push_back(sphere);
 }
 
-const std::vector<Sphere*>& Scene::GetScene() const
+const std::vector<Surface*>& Scene::GetScene() const
 {
 	return _scene;
 }
