@@ -10,12 +10,29 @@ Scene::~Scene()
 {
 }
 
-void Scene::AddObject(Surface * sphere)
+
+
+void Scene::AddSurface(Surface* surface)
 {
-	_scene.push_back(sphere);
+	_surfaces.push_back(surface);
 }
 
-const std::vector<Surface*>& Scene::GetScene() const
+const std::vector<Surface*>& Scene::GetSurfaces() const
 {
-	return _scene;
+	return _surfaces;
+}
+
+void Scene::AddLight(PointLight * light)
+{
+	_lights.push_back(light);
+}
+
+const std::vector<PointLight*>& Scene::GetLights() const
+{
+	return _lights;
+}
+
+Camera* Scene::GetCamera()
+{
+	return _mainCamera;
 }
