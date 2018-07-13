@@ -1,11 +1,11 @@
 //#include "stdafx.h"
 #include "Sphere.h"
 
-Sphere::Sphere(float x, float y, float z, float radius, RGB color)
+Sphere::Sphere(float x, float y, float z, float radius, RGB color, float phongExponent)
 {
 	SetLocation(Vector3<float>(x, y, z));
 	_radius = radius;
-	SetMaterial(Material(color));
+	SetMaterial(Material(color, phongExponent));
 }
 
 bool Sphere::Hit(const Ray& ray, Vector2<float>& hitResult)
@@ -22,17 +22,18 @@ bool Sphere::Hit(const Ray& ray, Vector2<float>& hitResult)
 	if (discriminant >= 0)
 	{
 		hit = true;
-		float numerator = -1 * dir.DotProduct(viewCenter) + sqrtf(discriminant);
+		float numerator = -1 * dir.DotProduct(viewCenter) - sqrtf(discriminant);
 		float denominator = dir.DotProduct(dir);
 		float hitOffset = numerator / denominator;
 		hitResult.SetX(hitOffset);
-
+		hitResult.SetY(0.f);
 		if (discriminant >= 1)
 		{
-			numerator = -1 * dir.DotProduct(viewCenter) - sqrtf(discriminant);
+			numerator = -1 * dir.DotProduct(viewCenter) + sqrtf(discriminant);
 			hitOffset = numerator / denominator;
 			hitResult.SetY(hitOffset);
 		}
+
 	}
 
 	return hit;

@@ -20,12 +20,12 @@ void Surface::SetLocation(float x, float y, float z)
 	_location.SetX(x); _location.SetY(y); _location.SetZ(z);
 }
 
-const Material & Surface::GetMaterial() const
+Material Surface::GetMaterial()
 {
 	return _material;
 }
 
 void Surface::SetMaterial(const Material & material)
 {
-	_material.SetColor(material.GetColor());
+	_material = material;
 }

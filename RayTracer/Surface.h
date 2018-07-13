@@ -16,6 +16,6 @@ public:
 	void SetLocation(const Vector3<float>& vec);
 	void SetLocation(float x, float y, float z);
 
-	const Material& GetMaterial() const;
+	Material GetMaterial();
 	void SetMaterial(const Material& material);
 };
