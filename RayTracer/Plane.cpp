@@ -1,5 +1,5 @@
 #include "Plane.h"
-
+#include <stdio.h>
 Plane::Plane(float x, float y, float z, Vector3<float> normal, RGB color, float phongExponent)
 {
 	SetLocation(Vector3<float>(x, y, z));
@@ -9,14 +9,21 @@ Plane::Plane(float x, float y, float z, Vector3<float> normal, RGB color, float 
 
 bool Plane::Hit(const Ray & ray, Vector2<float>& hitResult)
 {
-	float dot = ray.GetDirection().DotProduct(_normal);
+	Vector3<float> rayDir = ray.GetDirection();
+	float denominator = _normal.DotProduct(rayDir.Normalize());
 	bool hit = false;
-	if (dot != 0)
+	float t = -1.f;
+	if (denominator > 1e-6)
 	{
-		float numerator = (GetLocation() - ray.GetOrigin()).DotProduct(_normal);
-		float d = numerator / dot;
-		hitResult.SetX(d);
-		hit = true;
+		Vector3<float> p = GetLocation() - ray.GetOrigin();
+		float numerator = _normal.DotProduct(p.Normalize());
+		t = numerator / denominator;
+
+		if (t >= 0.f)
+		{
+			hit = true;
+			hitResult.SetX(t);
+		}
 	}
 	return hit;
 }

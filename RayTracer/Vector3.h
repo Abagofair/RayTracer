@@ -50,9 +50,18 @@ public:
 	{
 		Vector3<T> v;
 		float len = Length();
-		v.SetX(GetX() / len);
-		v.SetY(GetY() / len);
-		v.SetZ(GetZ() / len);
+		if (len > 0)
+		{
+			v.SetX(GetX() / len);
+			v.SetY(GetY() / len);
+			v.SetZ(GetZ() / len);
+		}
+		else
+		{
+			v.SetX(0.f);
+			v.SetY(0.f);
+			v.SetZ(0.f);
+		}
 		return v;
 	}
 
