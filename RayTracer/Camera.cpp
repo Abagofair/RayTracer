@@ -27,14 +27,15 @@ Camera::Camera(float x, float y, float z, int d)
 
 	//construct orthonormal basis
 	//take viewpoint and create new point 5 units behind it in the y direction, then construct first w basis
-	Vector3<float> wEndPos(_viewPoint.GetX(), _viewPoint.GetY() - 5.f, _viewPoint.GetZ());
-	_w = (wEndPos - _viewPoint).Normalize();
+	Vector3<float> wEndPos(_viewPoint.GetX(), _viewPoint.GetY() - 1.f, _viewPoint.GetZ());
+	Vector3<float> uEndPos(_viewPoint.GetX() + 1.f, _viewPoint.GetY(), _viewPoint.GetZ());
+	_w = wEndPos.Normalize();
+	_u = uEndPos.CrossProduct(_w).Normalize();
 	//same is done for v
-	Vector3<float> vEndPos(_viewPoint.GetX(), _viewPoint.GetY(), _viewPoint.GetZ() + 5.f);
 	//Vector3<float> temp = vEndPos - _viewPoint;
-	_v = (vEndPos - _viewPoint).Normalize();
+	_v = _w.CrossProduct(_u);
 	//take cross product of w and v and get u
-	_u = _w.CrossProduct(_v).Normalize() * -1;
+	//_u = _w.CrossProduct(_v).Normalize();
 }
 
 const Vector3<float>& Camera::GetPosition() const
@@ -69,8 +70,8 @@ float Camera::GetFocalDistance()
 
 Vector2<float> Camera::ImagePlanePoint(int i, int j, int width, int height)
 {
-	float r = _u.GetX();
-	float t = _v.GetZ();
+	float r = width;//_u.GetX();
+		float t = height;//_v.GetZ();
 	float l = -1 * r;
 	float b = -1 * t;
 	float u = l + ((r - l)*(i + 0.5) / width);

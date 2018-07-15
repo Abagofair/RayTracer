@@ -19,11 +19,8 @@ bool Plane::Hit(const Ray & ray, Vector2<float>& hitResult)
 		float numerator = _normal.DotProduct(p.Normalize());
 		t = numerator / denominator;
 
-		if (t >= 0.f)
-		{
-			hit = true;
-			hitResult.SetX(t);
-		}
+		hit = true;
+		hitResult.SetX(t);
 	}
 	return hit;
 }
